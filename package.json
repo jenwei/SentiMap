@@ -1,0 +1,17 @@
+{
+  "name": "WikiApp",
+  "version": "0.0.0",
+  "description": "Simple wiki application.",
+  "main": "app.js",
+  "author": "CCM",
+  "dependencies": {
+    "body-parser": "^1.5.2",
+    "cookie-parser": "^1.4.1",
+    "express": "~4.7.2",
+    "express-handlebars": "^3.0.0",
+    "method-override": "~2.1.2",
+    "mongoose": "^4.4.5",
+    "morgan": "~1.2.2",
+    "path": "^0.12.7"
+  }
+}

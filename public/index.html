@@ -1,0 +1,21 @@
+<!-- Main HTML Template -->
+
+<html ng-app="ShoeWikiApp">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>Shoe Wiki</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.2/angular.min.js"></script>
+    <script src="http://code.angularjs.org/1.2.0-rc.2/angular-route.min.js"></script>
+
+    <script src="/javascript/router.js"></script>
+    <!--<script src="/javascript/controller.js"></script>-->
+    <link rel="stylesheet" type="text/css" href="templates/styles.css">
+  </head>
+  <body ng-controller="mainController">
+    <div class="container">
+      <div ng-view></div> <!--This is where view is inserted-->
+    </div>
+  </body>
+</html>

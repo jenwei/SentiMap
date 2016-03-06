@@ -1,0 +1,25 @@
+<div id="title">
+    <br/>
+    <h1>Welcome to Shoe Wiki!</h1>
+</div>
+<div class="item">
+  <h3> Articles </h3>
+
+  Looking for a specific article? <br/>
+  <input type="text" ng-model="searchData">
+  <!-- ngChange="updateSearch() -->
+  <br/>
+  	<!--looks at the index as opposed to content-->
+    <div class="container" ng-repeat='obj in posts | searchFor:searchData'>
+      <a href="#/pages/{{obj.url}}">
+        <div id="articlePreview">
+          <p style="text-align:left; padding-left:3em"> {{obj.title}} </p>
+          <p style="text-align:left; padding-left:3em"> {{obj.body}} </p>
+        </div>
+      </a>
+    </div>
+</div>
+
+<span>
+  <a style="text-align: center" class="button" href="#/new">Make your own!</a>
+</span>

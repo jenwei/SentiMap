@@ -1,0 +1,113 @@
+@import url(https://fonts.googleapis.com/css?family=Open+Sans:400,600,700);
+
+* {
+  font-family: 'Open Sans', sans-serif;
+}
+
+body {
+  background-color: hsv(180, 75%, 98%);
+}
+
+a {
+text-decoration: none;
+color: #000000;
+}
+
+.container {
+  /*display: flex;*/
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+}
+
+#title {
+  color: #000000;
+  text-decoration: none;
+  text-align: middle;
+  background-color: rgb(167, 244, 225);
+  vertical-align: middle;
+  height: 15%;
+  box-shadow: 1px 2px 1px .5px rgb(77, 77, 77);
+  margin: 30px 30px 30px 30px;
+  min-width: 250px;
+  padding-left: 25%;
+}
+
+.item {
+  background-color: rgb(167, 244, 225);
+  text-align: center;
+  margin: 30px 30px 30px 30px;
+  min-width: 200px;
+  box-shadow: 1px 2px 1px .5px rgb(77, 77, 77);
+  padding: 5%;
+  text-decoration: none;
+}
+
+#articlePreview {
+  background-color: rgba(230, 246, 242, 1);
+  text-align: center;
+  text-decoration: none;
+  margin: 15px 30px 15px 30px;
+  min-width: 100px;
+  box-shadow: 1px 2px 1px .5px rgb(77, 77, 77);
+  text-decoration: none;
+  padding: 5px;
+} 
+
+#input {
+  padding: 5px;
+  border: solid 1px #fff;
+  box-shadow: inset 1px 1px 2px 0 #707070;
+  transition: box-shadow 0.3s;
+}
+
+#input:focus, #input.focus {
+   box-shadow: inset 1px 1px 2px 0 #c9c9c9;
+}
+
+textarea {
+  height: 3.5%;
+  display: inline-block;
+  padding-top: 2px;
+  padding-right: 2px;
+  padding-bottom: 2px;
+  padding-left: 2px;
+}
+
+/* making the description textarea bigger than the rest*/
+#newBody {
+  height: 25%;
+}
+
+/* specifications for labels (specifically for ones on new page creation) */
+label{
+    display: inline-block;
+    float: left;
+    width: 100px;
+    text-align: right;
+    padding-right: 5px;
+}
+
+/* work around to avoid onClick javascript href - copy and pasted a lot of default styling of a button */
+a.button {
+    -webkit-appearance: button;
+    -moz-appearance: button;
+    appearance: button;
+
+    text-decoration: none;
+    color: initial;
+    padding: 1px;
+    border: 2px inset;
+    word-spacing: normal;
+    text-transform: none;
+    text-indent: 0px;
+    text-shadow: none;
+    display: inline-block;
+    text-align: start;
+    margin: 0em 0em 0em 0em;
+    font: 13.3333px Arial;
+    padding-top: 2px;
+    padding-right: 6px;
+    padding-bottom: 3px;
+    padding-left: 6px;
+}
