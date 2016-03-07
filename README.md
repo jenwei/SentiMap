@@ -1,2 +1,4 @@
-# SentiMap
-OlinJS Spring 2016 Lab 2
+# musicwiki
+Base repository for SentiMap
+OlinJS 2016
+
