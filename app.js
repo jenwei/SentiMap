@@ -13,17 +13,12 @@ var favicon = require('serve-favicon');
 
 var app = express();
 
-//console.log(process.env['MONGOLAB_URI']);
-//mongoose.connect(process.env.MONGOLAB_URI || 'mongodb://localhost/pages');
-//mongoose.connect('mongodb://localhost/pages');
 mongoose.connect('mongodb://brenna:char@ds017688.mlab.com:17688/musicwiki');
-
-
 var db = mongoose.connection;
 
 db.on('error', console.error.bind(console, 'connection error:'));
 db.once('open', function() {
-  console.log('connected!');
+  console.log('DB connected!');
 });     // connect to mongoDB database on modulus.io
 
 
@@ -35,22 +30,17 @@ app.use(bodyParser.json({ type: 'application/vnd.api+json' })); // parse applica
 app.use(methodOverride());
 app.use(favicon(__dirname + '/public/images/favicon.ico'));
 
-
-//app.get('/api/pages', index);
-// app.post('/api/pages', index);
-// app.post('/api/pages/edit', index)
-
-
 app.get('/', index.home);
+app.get('/alltweets', index.GETtweets);
+app.post('/political', index.POSTpolitical);
+app.post('/emotional', index.POSTemotional)
 
 // listen (start app with node server.js) ======================================
 
 var PORT = process.env.PORT || 3000;
 app.listen(PORT, function(err) {
-    if(err) console.log(err)
+    if(err) console.log(err);
+    else console.log("App listening on port 3000");
 });
-
-// app.listen(3000);
-// console.log("App listening on port 3000");
 
 module.exports = app;
