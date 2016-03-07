@@ -6,6 +6,7 @@
   "author": "Scotch",
   "dependencies": {
     "body-parser": "~1.5.2",
+    "d3": "^3.5.16",
     "express": "~4.7.2",
     "method-override": "~2.1.2",
     "mongoose": "~4.4.4",

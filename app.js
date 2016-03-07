@@ -16,7 +16,7 @@ var app = express();
 //console.log(process.env['MONGOLAB_URI']);
 //mongoose.connect(process.env.MONGOLAB_URI || 'mongodb://localhost/pages');
 //mongoose.connect('mongodb://localhost/pages');
-mongoose.connect('mongodb://brenna:char@ds017688.mlab.com:17688/musicwiki');
+//mongoose.connect('mongodb://brenna:char@ds017688.mlab.com:17688/musicwiki');
 
 
 var db = mongoose.connection;
@@ -25,7 +25,6 @@ db.on('error', console.error.bind(console, 'connection error:'));
 db.once('open', function() {
   console.log('connected!');
 });     // connect to mongoDB database on modulus.io
-
 
 app.use(express.static(__dirname + '/public'));                 // set the static files location /public/img will be /img for users
 app.use(morgan('dev'));                                         // log every request to the console
@@ -47,7 +46,8 @@ app.get('/', index.home);
 
 var PORT = process.env.PORT || 3000;
 app.listen(PORT, function(err) {
-    if(err) console.log(err)
+    if(err)console.log(err);
+    else console.log('Running on port: ' + PORT);
 });
 
 // app.listen(3000);
