@@ -36,12 +36,12 @@ app.use(methodOverride());
 app.use(favicon(__dirname + '/public/images/favicon.ico'));
 
 
-app.get('/api/pages', index);
-app.post('/api/pages', index);
-app.post('/api/pages/edit', index)
+//app.get('/api/pages', index);
+// app.post('/api/pages', index);
+// app.post('/api/pages/edit', index)
 
 
-app.get('*', index);
+app.get('/', index.home);
 
 // listen (start app with node server.js) ======================================
 
