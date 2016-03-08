@@ -14,7 +14,7 @@ d3.json("us.json", function(error, topo) { console.log(topo);
   	states = topojson.feature(topo, topo.objects.states).features
   	// set projection parameters
   	projection
-      .scale(1000)
+      .scale(700)
       .center([-106, 37.5])
 
     // create svg variable
