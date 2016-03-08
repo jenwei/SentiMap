@@ -4,10 +4,8 @@
 
 <!-- <!doctype html> -->
 
-
-
 <!-- ASSIGN OUR ANGULAR MODULE -->
-<html ng-app="myWiki">
+<html ng-app="sentiMap">
    <head>
       <!-- META -->
       <meta charset="utf-8">
@@ -28,6 +26,8 @@
       <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.3.6/angular-aria.js"></script>
       <!-- Angular Material Javascript now available via Google CDN; version 0.6 used here -->
       <script src="//ajax.googleapis.com/ajax/libs/angular_material/0.11.2/angular-material.js"></script>
+       <script src="//d3js.org/d3.v3.min.js" charset="utf-8"></script>
+      
       <script src="core.js"></script>
    </head>
    <!-- SET THE CONTROLLER AND GET ALL PAGES -->
@@ -35,7 +35,7 @@
       <div class="container">
          <!-- HEADER AND PAGE COUNT -->
          <div style=" margin-top: 30px; padding-right:0; margin-right: 0px; width: 100%; background-color: #e9e9e9" class="jumbotron text-center header">
-            <h1>SentiMap</h1> <br> <h3><span class="label label-info">{{ pages.length }} pages and counting</span></h3>
+            <h1>SentiMap</h1> <br> 
          </div>
          <!-- PAGE LIST -->
          <div ng-cloak="" class="tabsdemoDynamicHeight">
@@ -44,63 +44,13 @@
                   
                   <md-tab label="view">
                      <md-content class="md-padding">
-                        <h1 class="md-display-2">Select a Page to View</h1>
-                        <div class="row" id="columns">
-                           <div class="col-sm-4" id="page-list">
-                              <div>
-                                 <!-- LOOP OVER THE PAGESS IN $scope.pages -->
-                                 <div class="list-group " ng-repeat="page in pages" >
-                                    <a type="button" class="list-group-item" ng-click="showPage(page)">{{page.name}}</a>
-                                 </div>
-                              </div>
-                           </div>
-                           <!-- pageshowing -->
-                           <div class="col-sm-8" id="pageshowing" ng-hide="!currentPage.showing" >
-                              <h1>{{currentPage.name}}</h1>
-                              <img src= {{currentPage.imageurl}} style="width:300px">
-                              <br></br> 
-                              <p>{{currentPage.text}}</p>
-                              <br></br> Submitted By: 
-                              <h6>{{currentPage.author}}</h6>
-                              <br></br> Last Edited By: {{currentPage.lasteditedby}}
-                              <br></br>
-                              <span><a class= "btn btn-primary btn-sm" ng-click="isEditFormOpen = !isEditFormOpen">Edit This Page</a></span> <br></br>
-                              <div ng-show="isEditFormOpen" >
-                                 <form name = "editedby" class="col-sm-12">
-                                   <!-- <input type="text" class="form-control input-md text-center" placeholder="New Article Title" ng-model="editedPage.name" ng-value="currentPage.name">  -->
-                                    <br></br><!-- ng-value="currentPage.name" ng-required-->
-                                    <textarea class="form-group input-lg text-center" placeholder="{{currentPage.text}}" ng-model="editedPage.text"></textarea>
-                                    <br></br>
-                                    <textarea class="form-group input-lg text-center" placeholder="New image URL" ng-model="editedPage.imageurl"></textarea>
-                                    <br></br>
-
-                                    <input name = "editedby" type = "text" class="form-control input-md text-center" placeholder="Edited by..." ng-model="editedPage.lasteditedby" required=true>
-                                    <br></br>
-                                    <button ng-disabled="editedby.$invalid" type="submit" class="btn btn-primary btn-sm" ng-click="editPage()">Submit Edits</button>
-                                 </form>
-                              </div>
-                           </div>
-                        </div>
+                        
+                       
                      </md-content>
                   </md-tab>
                   <md-tab label="new">
                      <md-content class="md-padding">
-                        <h1 class="md-display-2">Create New Page</h1>
-                        <!--                 <div id="newForm" class = "newForm" class="col-sm-4 row col-sm-offset-4" ng-hide = "false" aria-hidden="false"> -->
-                        <!--                     Stuff in tab1!
-                           <span><a class= "btn btn-primary btn-sm" ng-click="isNewFormOpen = !isNewFormOpen">New Page</a></span>
-                           <div ng-show="isNewFormOpen" > -->
-                        <form name="newpageform" class="col-sm-4 row col-sm-offset-4">
-                           <input type="text" class="form-group input-lg text-center" placeholder="Title" ng-model="newPage.name" required=true> <!-- editData -->
-                           <textarea class="form-group input-lg text-center" placeholder="Text" ng-model="newPage.text" required=true></textarea>
-                           <input type="text" class="form-group input-lg text-center" placeholder= "What is your name?" ng-model="newPage.author" required=true>
-                           <input type="text" class="form-group input-lg text-center" placeholder= "Image URL" ng-model="newPage.imageurl">
-
-
-                           <button ng-disabled="newpageform.$invalid" type="submit" class="btn btn-primary btn-sm" ng-click="createPage()">Submit</button>
-                        </form>
-                        <!--                     </div> -->
-                        <!--                 </div> -->
+                        
                      </md-content>
                   </md-tab>
                </md-tabs>

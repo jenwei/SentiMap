@@ -12,11 +12,12 @@ var favicon = require('serve-favicon');
 
 var app = express();
 
+
 mongoose.connect('mongodb://brenna:char@ds017688.mlab.com:17688/musicwiki');
 var db = mongoose.connection;
 db.on('error', console.error.bind(console, 'Connection error:'));
 db.once('open', function() {
-  console.log('DB connected!');
+  console.log('DB connected');
 });     // connect to mongoDB database on modulus.io
 
 app.use(express.static(__dirname + '/public'));                 // set the static files location /public/img will be /img for users
@@ -35,7 +36,7 @@ app.post('/emotional', index.POSTemotional)
 var PORT = process.env.PORT || 3000;
 app.listen(PORT, function(err) {
     if(err) console.log(err);
-    else console.log('App listening on port 3000');
+    else console.log('App listening on port ' + PORT);
 });
 
 module.exports = app;

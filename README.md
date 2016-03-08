@@ -2,4 +2,4 @@
 Base repository for SentiMap
 OlinJS 2016
 
-fun things we used: indico.io, twitter, d3
+SentiMap is a webapp using indico's APIs to analyze Tweets (via Twitter's API) and visualize them on a map using D3.
