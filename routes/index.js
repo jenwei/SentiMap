@@ -1,13 +1,12 @@
-/* Express router. Defines the server-side behavior of the various endpoints.
- Provides ability to GET all pages, POST a new page, and POST edits to a given page.*/
+/*
+  index.js: Express router. Defines the server-side behavior.
+*/
 
 var express  = require('express');
-//var router = express.Router();                             // create our app w/ express
 var mongoose = require('mongoose'); 
 var auth = require('../auth.js');
-var routes = {};
-//TWIT
 var Twit = require('twit');
+var routes = {};
 
 var T = new Twit({
   consumer_key:         auth.consumer_key,
@@ -17,28 +16,6 @@ var T = new Twit({
   timeout_ms:           60*1000,  // optional HTTP request timeout to apply to all requests.
 });
 
-//  stream a sample of public statuses
-//
-// var stream = T.stream('statuses/sample')
-
-// stream.on('tweet', function (tweet) {
-//   console.log(tweet)
-// })
-
-// filter the public stream by the latitude/longitude bounded box of San Francisco
-//
-var sanFrancisco = [ '-122.75', '36.8', '-121.75', '37.8' ]
-
-var stream = T.stream('statuses/filter', { locations: sanFrancisco })
-
-stream.on('tweet', function (tweet) {
- console.log(tweet)
-})
-//ENDTWIT
-
-// routes ======================================================================
-
-
 
 routes.home = function(req, res){
   //res.render('index.html')
@@ -47,8 +24,14 @@ routes.home = function(req, res){
 };
 
 routes.GETtweets = function(req, res){
-  console.log('index.js') 
-    res.end();
+  var stream = T.stream('statuses/sample');
+  stream.on('tweet', function (tweet) {
+    if (tweet.place && tweet.place.country_code === 'US'){
+      console.log('\n', tweet.place.full_name);
+      console.log(tweet.text);
+    }
+  });
+  res.send({message: 'getting all tweets'});
 };
 
 routes.POSTpolitical = function(req, res){
