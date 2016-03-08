@@ -5,12 +5,11 @@
 var routes = {};
 var express  = require('express');
 var mongoose = require('mongoose'); 
+var Points = require('../models/pointModel.js');
 var auth = require('../auth.js');
 var Twit = require('twit');
 var indico = require('indico.io');
 indico.apiKey =  auth.indico_api_key;
-
-//TWIT
 var Twit = require('twit')
 var T = new Twit({
   consumer_key:         auth.consumer_key,
@@ -20,15 +19,44 @@ var T = new Twit({
   timeout_ms:           60*1000,  // optional HTTP request timeout to apply to all requests.
 });
 
-//INDICO
-indico
-  .political('Guns don\'t kill people. People kill people.')
-  .then(function(res){
-    console.log(res); // { Libertarian: 0.47740164630834825, Liberal: 0.16617097211030055, Green: 0.08454409540443657, Conservative: 0.2718832861769146} 
-  })
-  .catch(function(err){
-    console.log('err: ', err);
+// Stream all tweets
+(function(){
+  var stream = T.stream('statuses/sample');
+  stream.on('tweet', function (tweet) {
+    if (tweet.place && tweet.place.country_code === 'US'){
+      
+      var political;
+      indico
+        .political(tweet.text)
+        .then(function(res){
+          console.log(res); // { Libertarian: 0.47740164630834825, Liberal: 0.16617097211030055, Green: 0.08454409540443657, Conservative: 0.2718832861769146} 
+          political = res;
+        })
+        .catch(function(err){ console.log('Indico err:', err); });
+
+      var sentiment;
+      indico
+        .sentiment(tweet.text)
+        .then(function(res){
+          console.log(res);
+          sentiment = res;
+        })
+        .catch(function(err){ console.log('Indico err:', err); });
+
+      var point = new Points({
+          text : tweet.text,
+          sentiment: sentiment,
+          polysentiment: political,
+          location: tweet.place.full_name
+      });
+
+      point.save(function (err) {
+        if (err) console.log('Err adding point:', err);
+        else console.log('Added point:', point);
+      });
+    }
   });
+})();
 
 
 routes.home = function(req, res){
@@ -38,13 +66,6 @@ routes.home = function(req, res){
 };
 
 routes.GETtweets = function(req, res){
-  var stream = T.stream('statuses/sample');
-  stream.on('tweet', function (tweet) {
-    if (tweet.place && tweet.place.country_code === 'US'){
-      console.log('\n', tweet.place.full_name);
-      console.log(tweet.text);
-    }
-  });
   res.send({message: 'getting all tweets'});
 };
 
