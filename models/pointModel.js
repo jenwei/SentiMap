@@ -10,8 +10,8 @@ var pointSchema = mongoose.Schema({
   text : String,
   sentiment: String,
   polysentiment: String,
-  x: float,
-  y: float,
+  x: Number,
+  y: Number,
   
 });
 

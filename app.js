@@ -9,13 +9,11 @@ var morgan = require('morgan');             // log requests to the console (expr
 var bodyParser = require('body-parser');    // pull information from HTML POST (express4)
 var methodOverride = require('method-override'); // simulate DELETE and PUT (express4)
 var favicon = require('serve-favicon');
-
-
 var app = express();
 
 //console.log(process.env['MONGOLAB_URI']);
 //mongoose.connect(process.env.MONGOLAB_URI || 'mongodb://localhost/pages');
-//mongoose.connect('mongodb://localhost/pages');
+mongoose.connect('mongodb://localhost/test');
 //mongoose.connect('mongodb://brenna:char@ds017688.mlab.com:17688/musicwiki');
 
 
@@ -35,12 +33,9 @@ app.use(methodOverride());
 app.use(favicon(__dirname + '/public/images/favicon.ico'));
 
 
-//app.get('/api/pages', index);
-// app.post('/api/pages', index);
-// app.post('/api/pages/edit', index)
-
-
-app.get('/', index.home);
+app.get('/sentiment', index);
+app.get('/political', index);
+app.get('*', index);
 
 // listen (start app with node server.js) ======================================
 
@@ -50,7 +45,5 @@ app.listen(PORT, function(err) {
     else console.log('Running on port: ' + PORT);
 });
 
-// app.listen(3000);
-// console.log("App listening on port 3000");
 
 module.exports = app;
