@@ -18,7 +18,7 @@ d3.json("us.json", function(error, topo) { console.log(topo);
       .center([-106, 37.5])
 
     // create svg variable
-    var svg = d3.select("body").append("svg")
+    var svg = d3.select(".md-padding").append("svg")
     				.attr("width", width)
     				.attr("height", height);
 

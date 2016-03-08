@@ -12,9 +12,14 @@
       <meta name="viewport" content="width=device-width, initial-scale=1">
       <!-- Optimize mobile viewport -->
       <title>SentiMap</title>
+
+      <!-- D3 scripts and CSS -->
+      <script src="http://d3js.org/d3.v3.min.js" charset="utf-8"></script>
+      <script src="http://d3js.org/topojson.v1.min.js"></script>
+      <link rel="stylesheet" type="text/css" href = "views/d3-map.css">
+
       <!-- SCROLLS PUT THIS BACK IN PLS-->
       <link rel="stylesheet" href="//bootswatch.com/flatly/bootstrap.min.css">
-      <!--     <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootswatch/3.3.6/flatly/bootstrap.min.css"> -->
       <link rel="stylesheet" type = "text/css" href = "/public/views/style.css">
       <link rel="stylesheet" href="//cdn.gitcdn.link/cdn/angular/bower-material/v1.0.6/angular-material.css">
       <link rel="stylesheet" href="//material.angularjs.org/1.0.6/docs.css">
@@ -56,6 +61,7 @@
             <h1>SentiMap</h1> <br> 
          </div>
          <!-- PAGE LIST -->
+         <script src='d3-map.js'></script>
          <div ng-cloak="" class="tabsdemoDynamicHeight">
             <md-content>
                <md-tabs md-dynamic-height="true" md-border-bottom="">
@@ -63,7 +69,6 @@
                   <md-tab label="Positive/Negative Sentiment">
                      <md-content class="md-padding">
                         <p>map1</p>
-                       
                      </md-content>
                   </md-tab>
                   <md-tab label="Political Sentiment">
