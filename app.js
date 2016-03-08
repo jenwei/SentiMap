@@ -12,7 +12,7 @@ var methodOverride = require('method-override'); 	// simulate DELETE and PUT (ex
 var favicon = require('serve-favicon');
 var app = express();
 
-mongoose.connect('mongodb://brenna:char@ds017688.mlab.com:17688/musicwiki');
+mongoose.connect('mongodb://localhost/test');
 var db = mongoose.connection;
 db.on('error', console.error.bind(console, 'Connection error:'));
 db.once('open', function() {
