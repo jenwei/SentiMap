@@ -41,7 +41,7 @@ var stream = T.stream('statuses/filter', { locations: sanFrancisco })
 
 
 routes.home = function(req, res){
-  //res.render('index.html')
+  res.sendFile('index.html', {root:path.join(__dirname, '../public')})
   console.log('Test')
   res.send('Test');
 };
