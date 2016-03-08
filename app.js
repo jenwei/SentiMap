@@ -1,5 +1,6 @@
 /*
-	app.js: Main application file. Database, endpoints, and listens
+	app.js: Main application file. Creates connection to database, creates 
+	app endpoints, listens to port 3000 or PORT environment variable.
 */
 
 var express  = require('express');
