@@ -24,4 +24,7 @@ sentiMap.controller('mainController', function($scope, $http) {
              console.log('Error: in get\'/political' + data);
          });
     
+
+
+
  });
