@@ -1,7 +1,6 @@
 //Main application file. Creates connection to database, creates app endpoints, 
 //listens to port 3000 or PORT environment variable.
 //This app is on Heroku! 
-
 var express  = require('express');
 var index = require('./routes/index.js');                               // create our app w/ express
 var mongoose = require('mongoose');                     // mongoose for mongodb
@@ -10,13 +9,10 @@ var bodyParser = require('body-parser');    // pull information from HTML POST (
 var methodOverride = require('method-override'); // simulate DELETE and PUT (express4)
 var favicon = require('serve-favicon');
 var app = express();
-
 //console.log(process.env['MONGOLAB_URI']);
 //mongoose.connect(process.env.MONGOLAB_URI || 'mongodb://localhost/pages');
 mongoose.connect('mongodb://localhost/test');
 //mongoose.connect('mongodb://brenna:char@ds017688.mlab.com:17688/musicwiki');
-
-
 var db = mongoose.connection;
 
 db.on('error', console.error.bind(console, 'connection error:'));

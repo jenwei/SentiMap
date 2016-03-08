@@ -19,11 +19,12 @@ var T = new Twit({
 })
 
 //  stream a sample of public statuses
-//
 var stream = T.stream('statuses/sample')
+
 //stream.on('tweet', function (tweet) {
   //console.log(tweet)
 //})
+
 // filter the public stream by the latitude/longitude bounded box of San Francisco
 //
 //var sanFrancisco = [ '-122.75', '36.8', '-121.75', '37.8' ]
@@ -32,6 +33,8 @@ var stream = T.stream('statuses/sample')
 //  console.log(tweet)
 //})
 //ENDTWIT
+
+
 
 //INDICO
 
@@ -44,21 +47,9 @@ var stream = T.stream('statuses/sample')
 //  .catch(function(err){
 //    console.log('err: ', err);
 //  })
+//END INDICO EXAMPLE
 
 // routes ======================================================================
-
-
-/*routes.GETtweets = function(req, res){
-  console.log('index.js') 
-    res.end();
-};
-routes.POSTpolitical = function(req, res){
-    res.end();
-};
-routes.POSTemotional = function(req, res){
-    res.end();
-};*/
-
 
 router.get('/sentiment', function(req, res) {
   Point.find({}, function(err, points) {
