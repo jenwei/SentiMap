@@ -9,9 +9,7 @@ var morgan = require('morgan');             		// log requests to the console (ex
 var bodyParser = require('body-parser');    		// pull information from HTML POST (express4)
 var methodOverride = require('method-override'); 	// simulate DELETE and PUT (express4)
 var favicon = require('serve-favicon');
-
 var app = express();
-
 
 mongoose.connect('mongodb://brenna:char@ds017688.mlab.com:17688/musicwiki');
 var db = mongoose.connection;
@@ -29,9 +27,8 @@ app.use(methodOverride());
 app.use(favicon(__dirname + '/public/images/favicon.ico'));
 
 app.get('/', index.home);
-app.get('/alltweets', index.GETtweets);
-app.post('/political', index.POSTpolitical);
-app.post('/emotional', index.POSTemotional)
+app.post('/political', index.GETpolitical);
+app.post('/sentiment', index.GETsentiment)
 
 var PORT = process.env.PORT || 3000;
 app.listen(PORT, function(err) {

@@ -59,22 +59,29 @@ var T = new Twit({
 })();
 
 
+// ROUTES
 routes.home = function(req, res){
-  //res.render('index.html')
-  console.log('Test')
-  res.send('Test');
+  res.sendfile('./public/index.html');
 };
 
-routes.GETtweets = function(req, res){
-  res.send({message: 'getting all tweets'});
+routes.GETsentiment = function(req, res){
+   Points.find({}, function(err, points) {
+    if (err) { 
+      console.log('Error!');
+      res.send(err);
+    }
+    res.json(points);
+  });
 };
 
-routes.POSTpolitical = function(req, res){
-    res.end();
-};
-
-routes.POSTemotional = function(req, res){
-    res.end();
+routes.GETpolitical = function(req, res){
+  Points.find({}, function(err, points) {
+    if (err) { 
+      console.log('Error!');
+      res.send(err);
+    }
+    res.json(points);
+  });
 };
 
 module.exports=routes;

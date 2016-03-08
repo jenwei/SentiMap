@@ -1,12 +1,7 @@
 /*Angular controller. Controls DOM, sets and interacts with $scope variables 
-to facilitate the GET/POST requests. Defines which page is currently in 
-view/currently being edited, and the edits being made, so that these changes
- can be displayed/POSTed.*/
- 
-
+to facilitate the GET/POST requests.*/
 sentiMap = angular.module('sentiMap', ['ngMaterial']);
-
- sentiMap.controller('mainController', function($scope, $http) {
+sentiMap.controller('mainController', function($scope, $http) {
      $scope.formData = {};
      $scope.newPage = {};
      $scope.currentPage = {};
@@ -16,9 +11,7 @@ sentiMap = angular.module('sentiMap', ['ngMaterial']);
      $scope.editedPage._id = $scope.currentPage._id;
      $scope.editedPage.showing = true;
 
-
-
-     // when landing on the page, get all todos and show them
+    // when landing on the page, get all todos and show them
      $http.get('/api/pages')
          .success(function(data) {
              $scope.pages = data;
