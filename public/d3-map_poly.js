@@ -18,35 +18,14 @@ d3.json("us.json", function(error, topo) { console.log(topo);
       .center([-98, 37.5])
 
     // create svg variable
+    var svg = d3.select("#politicalMap").append("svg")
+    				.attr("width", width)
+    				.attr("height", height);
 
-    var svg = d3.select("#sentimentMap").append("svg")
-            .attr("width", width)
-            .attr("height", height);
+    // points
+    aa = {coordinates:[-82.490402, 43.786453], sent: 5, tweetName: "lol"};
+    bb = {coordinates:[-122.389809, 37.72728], sent: 2.8, tweetName: "yeees"};
 
-    // hard-coded variables
-    aa = {coordinates:[-82.490402, 33.786453], sent: 5, tweetName: "lol"};
-    bb = {coordinates:[-100.389809, 37.72728], sent: 2.8, tweetName: "yeees"};
-    cc = {coordinates:[-125.389809, 32.72728], sent: 5.2, tweetName: "nooo"};
-    dd = {coordinates:[-122.389809, 35.72728], sent: 3.5, tweetName: "wut"};
-    
-
-    /*if(page == 'senti'){
-      var svg = d3.select("#sentimentMap").append("svg")
-      				.attr("width", width)
-      				.attr("height", height);
-      aa = {coordinates:[-71, 42], sent:10.2, tweetName: "olinjs"};
-      bb = {coordinates:[-122.389809, 37.72728], sent: 4, tweetName: "yeees"};
-    }
-
-    else if(page == 'poly'){
-      var svg = d3.select("#politicalMap").append("svg")
-              .attr("width", width)
-              .attr("height", height);
-      aa = {coordinates:[-82.490402, 43.786453], sent: 5, tweetName: "lol"};
-      bb = {coordinates:[-122.389809, 37.72728], sent: 2.8, tweetName: "yeees"};
-    }*/
-
-   
 	// bb = [-122.389809, 37.72728];
 
 	console.log(projection(aa),projection(bb));
@@ -60,7 +39,7 @@ d3.json("us.json", function(error, topo) { console.log(topo);
       .attr("d", path);
 
       console.log(topojson.mesh(topo, topo.objects.states))
-    // put border around states 
+    // put boarder around states 
   	//svg.append("path")
     //  .datum(topojson.mesh(topo, topo.objects.states, function(a, b) { return a !== b; }))
     //  .attr("class", "mesh")
@@ -73,7 +52,7 @@ d3.json("us.json", function(error, topo) { console.log(topo);
 		.attr("cx", function (d) {  return projection(d.coordinates)[0]; })
 		.attr("cy", function (d) { return projection(d.coordinates)[1]; })
     .attr("r", function (d) { return d.sent})
-		.attr("opacity", function(d) {return d.sent/10.0;})
+		// .attr("r", "8px")
 		.attr("fill", "red")
     .on("mouseover", function(d){ 
       div.transition()
