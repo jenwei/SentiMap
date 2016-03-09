@@ -14,8 +14,8 @@ d3.json("us.json", function(error, topo) { console.log(topo);
   	states = topojson.feature(topo, topo.objects.states).features
   	// set projection parameters
   	projection
-      .scale(700)
-      .center([-106, 37.5])
+      .scale(800)
+      .center([-98, 37.5])
 
     // create svg variable
     var svg = d3.select("#sentimentMap").append("svg")
@@ -40,10 +40,10 @@ d3.json("us.json", function(error, topo) { console.log(topo);
 
       console.log(topojson.mesh(topo, topo.objects.states))
     // put boarder around states 
-  	svg.append("path")
-      .datum(topojson.mesh(topo, topo.objects.states, function(a, b) { return a !== b; }))
-      .attr("class", "mesh")
-      .attr("d", path);
+  	//svg.append("path")
+    //  .datum(topojson.mesh(topo, topo.objects.states, function(a, b) { return a !== b; }))
+    //  .attr("class", "mesh")
+    //  .attr("d", path);
 
 //     // add circles to svg
     svg.selectAll("circle")
