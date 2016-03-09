@@ -1,29 +1,41 @@
+var width = 950,
+    height = 550;
 
+// set projection
+var projection = d3.geo.mercator();
 
+<<<<<<< HEAD
 function showMap(page){
 
-
-  var width = 950,
-      height = 550;
-
-  // set projection
-  var projection = d3.geo.mercator();
-
-  // create path variable
-  var path = d3.geo.path()
-      .projection(projection);
+=======
+// create path variable
+var path = d3.geo.path()
+    .projection(projection);
+>>>>>>> cea1493cc44383d1987bb1b1d321ab0a08f3fad5
 
 
-  d3.json("us.json", function(error, topo) { console.log(topo);
+d3.json("us.json", function(error, topo) { console.log(topo);
 
-    	states = topojson.feature(topo, topo.objects.states).features
-    	// set projection parameters
-    	projection
-        .scale(800)
-        .center([-98, 37.5])
+  	states = topojson.feature(topo, topo.objects.states).features
+  	// set projection parameters
+  	projection
+      .scale(800)
+      .center([-98, 37.5])
 
-      // create svg variable
+    // create svg variable
 
+    var svg = d3.select("#sentimentMap").append("svg")
+            .attr("width", width)
+            .attr("height", height);
+
+    // hard-coded variables
+    aa = {coordinates:[-82.490402, 33.786453], sent: 5, tweetName: "lol"};
+    bb = {coordinates:[-100.389809, 37.72728], sent: 2.8, tweetName: "yeees"};
+    cc = {coordinates:[-125.389809, 32.72728], sent: 5.2, tweetName: "nooo"};
+    dd = {coordinates:[-122.389809, 35.72728], sent: 3.5, tweetName: "wut"};
+    
+
+<<<<<<< HEAD
       /*var svg = d3.select("#sentimentMap").append("svg")
               .attr("width", width)
               .attr("height", height);
@@ -79,6 +91,7 @@ function showMap(page){
   		.attr("cx", function (d) {  return projection(d.coordinates)[0]; })
   		.attr("cy", function (d) { return projection(d.coordinates)[1]; })
       .attr("r", function (d) { return d.sent})
+      .attr("opacity", function(d) {return d.sent/10.0;})
   		// .attr("r", "8px")
   		.attr("fill", "red")
       .on("mouseover", function(d){ 
