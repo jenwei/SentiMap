@@ -11,8 +11,9 @@ var bodyParser = require('body-parser');    		// pull information from HTML POST
 var methodOverride = require('method-override'); 	// simulate DELETE and PUT (express4)
 var favicon = require('serve-favicon');
 var app = express();
+var auth = require('./auth.js');
 
-mongoose.connect('mongodb://localhost/test');
+mongoose.connect(auth.mongo);
 var db = mongoose.connection;
 db.on('error', console.error.bind(console, 'Connection error:'));
 db.once('open', function() {

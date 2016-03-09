@@ -11,6 +11,7 @@ sentiMap.controller('mainController', function($scope, $http) {
     $scope.politicalMapPage={};
     $scope.refreshMaps={}; //if we want this?
 
+
     $http.get('/sentiment')
          .success(function(data) {
              $scope.sentimentMapPage = data;
@@ -29,8 +30,5 @@ sentiMap.controller('mainController', function($scope, $http) {
              console.log('Error: in get\'/political' + data);
          });
    
-
-   
-
 
  });
