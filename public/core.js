@@ -5,7 +5,7 @@ sentiMap = angular.module('sentiMap', ['ngMaterial']);
 //var map = require('d3-map.js')
 
 sentiMap.controller('mainController', function($scope, $http) {
-    $scope.showSentiMap={};
+    
     $scope.showPolyMap={};
     $scope.sentimentMapPage={};
     $scope.politicalMapPage={};
@@ -30,5 +30,9 @@ sentiMap.controller('mainController', function($scope, $http) {
              console.log('Error: in get\'/political' + data);
          });
    
+    $scope.showSentiMap=function(){
+        console.log('hello');
+    }; 
+
 
  });
