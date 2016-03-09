@@ -6,22 +6,29 @@ sentiMap.controller('mainController', function($scope, $http) {
     $scope.politicalMapPage={};
     $scope.refreshMaps={}; //if we want this?
 
-    $http.get('/sentiment')
-         .success(function(data) {
-             $scope.sentimentMapPage = data;
-             console.log(data);
-         })
-         .error(function(data) {
-             console.log('Error: in get\'/sentiment' + data);
-         });
+    // $scope.getSentiment = function(){
+        $http.get('/sentiment')
+             .success(function(data) {
+                 $scope.sentimentMapPage = data;
+                 console.log(data);
+             })
+             .error(function(data) {
+                 console.log('Error: in get\'/sentiment' + data);
+             });
+    // };
 
-    $http.get('/political')
-         .success(function(data) {
-             $scope.politicalMapPage = data;
-             console.log(data);
-         })
-         .error(function(data) {
-             console.log('Error: in get\'/political' + data);
-         });
-    
+    // setInterval($scope.getSentiment, 1000);
+
+    // $scope.getPolitical = function(){
+        $http.get('/political')
+             .success(function(data) {
+                 $scope.politicalMapPage = data;
+                 console.log(data);
+             })
+             .error(function(data) {
+                 console.log('Error: in get\'/political' + data);
+             });
+    // };
+
+    // setInterval($scope.getPolitical, 1000);
  });
