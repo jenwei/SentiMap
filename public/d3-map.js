@@ -1,5 +1,7 @@
 
 
+function showMap(page){
+
 
   var width = 950,
       height = 550;
@@ -22,14 +24,14 @@
 
       // create svg variable
 
-      var svg = d3.select("#sentimentMap").append("svg")
+      /*var svg = d3.select("#sentimentMap").append("svg")
               .attr("width", width)
               .attr("height", height);
       aa = {coordinates:[-82.490402, 33.786453], sent: 5, tweetName: "lol"};
       bb = {coordinates:[-100.389809, 37.72728], sent: 2.8, tweetName: "yeees"};
-      
+      */
 
-      /*if(page == 'senti'){
+     /* if(page == 'senti'){
         var svg = d3.select("#sentimentMap").append("svg")
         				.attr("width", width)
         				.attr("height", height);
@@ -44,6 +46,11 @@
         aa = {coordinates:[-82.490402, 43.786453], sent: 5, tweetName: "lol"};
         bb = {coordinates:[-122.389809, 37.72728], sent: 2.8, tweetName: "yeees"};
       }*/
+        var svg = d3.select("#politicalMap").append("svg")
+                .attr("width", width)
+                .attr("height", height);
+
+      
 
      
   	// bb = [-122.389809, 37.72728];
@@ -92,3 +99,4 @@
         .attr("class", "tooltip")
         .style("opacity", 0);
   });
+};

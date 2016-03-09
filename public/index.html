@@ -41,7 +41,7 @@
          </div>
          <!-- PAGE LIST -->
          <script src='d3-map.js'></script>
-         <script src='d3-map_poly.js'></script>
+         <!--<script src='d3-map_poly.js'></script>-->
          <div ng-cloak="" class="tabsdemoDynamicHeight">
             <md-content>
                <md-tabs md-dynamic-height="true" md-border-bottom="">
@@ -51,7 +51,7 @@
                         <p>map1</p>
                      </md-content>
                   </md-tab>
-                  <md-tab label="Political Sentiment">
+                  <md-tab md-on-select='showPolyMap()'label="Political Sentiment">
                      <md-content class="md-padding" id = "politicalMap">
                         <p> map2</p>
                      </md-content>

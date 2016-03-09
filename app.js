@@ -13,6 +13,7 @@ var favicon = require('serve-favicon');
 var app = express();
 var auth = require('./auth.js');
 
+
 mongoose.connect(auth.mongo);
 var db = mongoose.connection;
 db.on('error', console.error.bind(console, 'Connection error:'));

@@ -2,14 +2,11 @@
 to facilitate the GET/POST requests.*/
 
 sentiMap = angular.module('sentiMap', ['ngMaterial']);
-//var map = require('d3-map.js')
-
 sentiMap.controller('mainController', function($scope, $http) {
     
-    $scope.showPolyMap={};
+ 
     $scope.sentimentMapPage={};
     $scope.politicalMapPage={};
-    $scope.refreshMaps={}; //if we want this?
 
 
     $http.get('/sentiment')
@@ -29,9 +26,15 @@ sentiMap.controller('mainController', function($scope, $http) {
          .error(function(data) {
              console.log('Error: in get\'/political' + data);
          });
-   
     $scope.showSentiMap=function(){
-        console.log('hello');
+        var map = require('d3-map.js')
+        console.log('hello senti');
+        map.showMap('senti');
+    }; 
+    $scope.showPolyMap=function(){
+        var map = require('d3-map.js')
+        console.log('hello poly');
+        map.showMap('poly');
     }; 
 
 
