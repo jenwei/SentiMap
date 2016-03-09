@@ -1,7 +1,12 @@
 /*Angular controller. Controls DOM, sets and interacts with $scope variables 
 to facilitate the GET/POST requests.*/
+
 sentiMap = angular.module('sentiMap', ['ngMaterial']);
+//var map = require('d3-map.js')
+
 sentiMap.controller('mainController', function($scope, $http) {
+    $scope.showSentiMap={};
+    $scope.showPolyMap={};
     $scope.sentimentMapPage={};
     $scope.politicalMapPage={};
     $scope.refreshMaps={}; //if we want this?
@@ -23,8 +28,9 @@ sentiMap.controller('mainController', function($scope, $http) {
          .error(function(data) {
              console.log('Error: in get\'/political' + data);
          });
-    
+   
 
+   
 
 
  });
