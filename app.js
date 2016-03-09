@@ -12,7 +12,7 @@ var methodOverride = require('method-override'); 	// simulate DELETE and PUT (ex
 var favicon = require('serve-favicon');
 var app = express();
 
-mongoose.connect('mongodb://test:test@ds059804.mlab.com:59804/sentimap-db');
+mongoose.connect(auth.mongo);
 var db = mongoose.connection;
 db.on('error', console.error.bind(console, 'Connection error:'));
 db.once('open', function() {
