@@ -1,21 +1,12 @@
-var width = 950,
-    height = 550;
-
-// set projection
-var projection = d3.geo.mercator();
-
-<<<<<<< HEAD
 function showMap(page){
-
-=======
-// create path variable
-var path = d3.geo.path()
-    .projection(projection);
->>>>>>> cea1493cc44383d1987bb1b1d321ab0a08f3fad5
-
-
-d3.json("us.json", function(error, topo) { console.log(topo);
-
+  var width = 950,
+    height = 550;
+    // set projection
+    var projection = d3.geo.mercator();
+   // create path variable
+    var path = d3.geo.path()
+        .projection(projection);
+    d3.json("us.json", function(error, topo) { console.log(topo);
   	states = topojson.feature(topo, topo.objects.states).features
   	// set projection parameters
   	projection
@@ -24,31 +15,15 @@ d3.json("us.json", function(error, topo) { console.log(topo);
 
     // create svg variable
 
-    var svg = d3.select("#sentimentMap").append("svg")
+      if(page == 'senti'){
+        var svg = d3.select("#sentimentMap").append("svg")
             .attr("width", width)
             .attr("height", height);
-
-    // hard-coded variables
-    aa = {coordinates:[-82.490402, 33.786453], sent: 5, tweetName: "lol"};
-    bb = {coordinates:[-100.389809, 37.72728], sent: 2.8, tweetName: "yeees"};
-    cc = {coordinates:[-125.389809, 32.72728], sent: 5.2, tweetName: "nooo"};
-    dd = {coordinates:[-122.389809, 35.72728], sent: 3.5, tweetName: "wut"};
-    
-
-<<<<<<< HEAD
-      /*var svg = d3.select("#sentimentMap").append("svg")
-              .attr("width", width)
-              .attr("height", height);
-      aa = {coordinates:[-82.490402, 33.786453], sent: 5, tweetName: "lol"};
-      bb = {coordinates:[-100.389809, 37.72728], sent: 2.8, tweetName: "yeees"};
-      */
-
-     /* if(page == 'senti'){
-        var svg = d3.select("#sentimentMap").append("svg")
-        				.attr("width", width)
-        				.attr("height", height);
-        aa = {coordinates:[-71, 42], sent:10.2, tweetName: "olinjs"};
-        bb = {coordinates:[-122.389809, 37.72728], sent: 4, tweetName: "yeees"};
+        // hard-coded variables
+        aa = {coordinates:[-82.490402, 33.786453], sent: 5, tweetName: "lol"};
+        bb = {coordinates:[-100.389809, 37.72728], sent: 2.8, tweetName: "yeees"};
+        cc = {coordinates:[-125.389809, 32.72728], sent: 5.2, tweetName: "nooo"};
+        dd = {coordinates:[-122.389809, 35.72728], sent: 3.5, tweetName: "wut"};
       }
 
       else if(page == 'poly'){
@@ -57,18 +32,9 @@ d3.json("us.json", function(error, topo) { console.log(topo);
                 .attr("height", height);
         aa = {coordinates:[-82.490402, 43.786453], sent: 5, tweetName: "lol"};
         bb = {coordinates:[-122.389809, 37.72728], sent: 2.8, tweetName: "yeees"};
-      }*/
-        var svg = d3.select("#politicalMap").append("svg")
-                .attr("width", width)
-                .attr("height", height);
-
-      
-
-     
-  	// bb = [-122.389809, 37.72728];
-
+      }
+  
   	console.log(projection(aa),projection(bb));
-
   	// add states from topojson
   	svg.selectAll("path")
         .data(states).enter()
@@ -83,7 +49,6 @@ d3.json("us.json", function(error, topo) { console.log(topo);
       //  .datum(topojson.mesh(topo, topo.objects.states, function(a, b) { return a !== b; }))
       //  .attr("class", "mesh")
       //  .attr("d", path);
-
   //     // add circles to svg
       svg.selectAll("circle")
   		.data([aa,bb]).enter()

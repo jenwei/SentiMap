@@ -26,15 +26,15 @@ sentiMap.controller('mainController', function($scope, $http) {
          .error(function(data) {
              console.log('Error: in get\'/political' + data);
          });
+         
     $scope.showSentiMap=function(){
-        var map = require('d3-map.js')
         console.log('hello senti');
-        map.showMap('senti');
+        showMap('senti');
     }; 
     $scope.showPolyMap=function(){
-        var map = require('d3-map.js')
         console.log('hello poly');
-        map.showMap('poly');
+
+        showMap('poly');
     }; 
 
 
