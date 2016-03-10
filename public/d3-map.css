@@ -28,3 +28,12 @@ div.tooltip {
 	border-radius: 8px;
 	pointer-events: none;
 }
+
+
+.legend {
+    font-size: 12px;
+}
+
+rect {
+    stroke-width: 2;
+}

@@ -1,11 +1,15 @@
 function showMap(page, data){
   var width = 950,
     height = 550;
+
   // set projection
   var projection = d3.geo.mercator();
+
   // create path variable
   var path = d3.geo.path()
       .projection(projection);
+
+  // set scales for color and opacities
   var sentimentColor = d3.scale.linear()
       .domain([0, 1])
       .range(['#ec576b', '#49e20e']);
@@ -19,15 +23,16 @@ function showMap(page, data){
       .domain([.4, 1])
       .range([0 , 1]);
 
-  d3.json("us.json", function(error, topo) { console.log(topo);
-	states = topojson.feature(topo, topo.objects.states).features
-	// set projection parameters
-	projection
-    .scale(850)
-    .center([-98, 37.5])
+  d3.json("us.json", function(error, topo) { 
+    console.log(topo);
+  	states = topojson.feature(topo, topo.objects.states).features
 
-  // create svg variable
+  	// set projection parameters
+  	projection
+      .scale(850)
+      .center([-98, 37.5])
 
+    // create svg variable
     if(page == 'senti'){
       var svg = d3.select("#sentimentMap").insert("svg")
           .attr("width", width)
@@ -63,6 +68,29 @@ function showMap(page, data){
             .duration(500)
             .style("opacity", 0.0);
         })
+
+      // legend of sentimap https://github.com/zeroviscosity/d3-js-step-by-step/blob/master/step-3-adding-a-legend.html
+      // http://eyeseast.github.io/visible-data/2013/08/27/responsive-legends-with-d3/
+      var legend = svg.selectAll('.legend')
+        .data(sentimentColor.domain())
+        .enter()
+        .append('g')
+        .attr("class", "legendLinear")
+        .attr("transform", "translate(20,20)");
+
+      var legendRectSize = 20, legendSpacing = 5;
+      var color = sentimentColor.range();
+
+      legend.append('rect')
+        .attr('width', legendRectSize)
+        .attr('height', legendRectSize)
+        .style('fill', color)
+        .style('stroke', color);
+
+      legend.append('text')
+        .attr('x', legendRectSize + legendSpacing)
+        .attr('y', legendRectSize + legendSpacing)
+        .text(function(d) {return d; })
     }
 
     else if(page == 'poly'){
