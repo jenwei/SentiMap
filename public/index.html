@@ -1,6 +1,7 @@
 <!-- index.html -->
 <!-- The DOM. Defines the layout of the page. Creates two tabs - a "Sentiment" tab and a "Political Sentiment" tab. -->
 <!-- <!doctype html> -->
+
 <!-- ASSIGN OUR ANGULAR MODULE -->
 <html ng-app="sentiMap">
    <head>
@@ -12,11 +13,11 @@
       <!-- D3 scripts and CSS -->
       <script src="http://d3js.org/d3.v3.min.js" charset="utf-8"></script>
       <script src="http://d3js.org/topojson.v1.min.js"></script>
-      <link rel="stylesheet" type="text/css" href = "public/d3-map.css">
+      <link rel="stylesheet" type="text/css" href = "d3-map.css">
 
       <!-- SCROLLS PUT THIS BACK IN PLS-->
       <link rel="stylesheet" href="//bootswatch.com/flatly/bootstrap.min.css">
-      <link rel="stylesheet" type = "text/css" href = "/public/views/style.css">
+      <link rel="stylesheet" type = "text/css" href = "/views/style.css">
       <link rel="stylesheet" href="//cdn.gitcdn.link/cdn/angular/bower-material/v1.0.6/angular-material.css">
       <link rel="stylesheet" href="//material.angularjs.org/1.0.6/docs.css">
       <!-- SPELLS -->
@@ -29,6 +30,8 @@
       <!-- Angular Material Javascript now available via Google CDN; version 0.6 used here -->
       <script src="//ajax.googleapis.com/ajax/libs/angular_material/0.11.2/angular-material.js"></script>
       <script src="//d3js.org/d3.v3.min.js" charset="utf-8"></script>
+
+      <!-- Controller and d3-map specific js -->
       <script src="d3-map.js"></script>
       <script src="core.js"></script>
    </head>
