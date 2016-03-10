@@ -1,4 +1,4 @@
-function showMap(page){
+function showMap(page, data){
   var width = 950,
     height = 550;
     // set projection
@@ -16,7 +16,8 @@ function showMap(page){
     // create svg variable
 
       if(page == 'senti'){
-        var svg = d3.select("#sentimentMap").append("svg")
+       
+        var svg = d3.select("#sentimentMap").insert("svg")
             .attr("width", width)
             .attr("height", height);
         // hard-coded variables
@@ -29,7 +30,7 @@ function showMap(page){
       else if(page == 'poly'){
         var svg = d3.select("#politicalMap").append("svg")
                 .attr("width", width)
-                .attr("height", height);
+                .attr("height", height)
         aa = {coordinates:[-82.490402, 43.786453], sent: 5, tweetName: "lol"};
         bb = {coordinates:[-122.389809, 37.72728], sent: 2.8, tweetName: "yeees"};
       }

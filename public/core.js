@@ -7,7 +7,7 @@ sentiMap.controller('mainController', function($scope, $http) {
  
     $scope.sentimentMapPage={};
     $scope.politicalMapPage={};
-
+    $scope.alldata={};
 
     $http.get('/sentiment')
          .success(function(data) {
@@ -26,12 +26,18 @@ sentiMap.controller('mainController', function($scope, $http) {
          .error(function(data) {
              console.log('Error: in get\'/political' + data);
          });
-         
+
     $scope.showSentiMap=function(){
+        var ourSVG = angular.element( document.querySelector('#sentimentMap'));
+        ourSVG.empty();
         console.log('hello senti');
+
+
         showMap('senti');
     }; 
     $scope.showPolyMap=function(){
+        var ourPolySVG = angular.element( document.querySelector('#politicalMap'));
+        ourPolySVG.empty();
         console.log('hello poly');
 
         showMap('poly');
