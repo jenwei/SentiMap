@@ -30,8 +30,7 @@ app.use(methodOverride());
 app.use(favicon(__dirname + '/public/images/favicon.ico'));
 
 app.get('/', index.home);
-app.post('/political', index.GETpolitical);
-app.post('/sentiment', index.GETsentiment)
+app.get('/data', index.GETdata);
 
 var PORT = process.env.PORT || 3000;
 app.listen(PORT, function(err) {

@@ -75,7 +75,7 @@ var geocoder = require('node-geocoder')(geocoderProvider, httpAdapter, google_ap
         });
 
       function savePoint(stageName){
-        console.log(stageName + ' stage ' + stage);
+        // console.log(stageName + ' stage ' + stage);
         if(log && stage === 3){ //if no errors occured and other functions occurred, add to mongodb
           var point = new Points({
               text: tweet.text,
@@ -86,14 +86,14 @@ var geocoder = require('node-geocoder')(geocoderProvider, httpAdapter, google_ap
 
           point.save(function (err) {
             if (err) console.log('Err adding point:', err);
-            else console.log('Added point: ' + 
-              '\n\t{' + 
-              '\n\t\ttext: ' + tweet.text +
-              '\n\t\tsentiment: ' + sentiment +
-              '\n\t\tpolysentiment: {Conservative: ' + political.Conservative + ' ...}' +
-              '\n\t\tlocation: {latitude: ' + location.latitude + ' ...}' +
-              '\n\t}'
-            );
+            // else console.log('Added point: ' + 
+            //   '\n\t{' + 
+            //   '\n\t\ttext: ' + tweet.text +
+            //   '\n\t\tsentiment: ' + sentiment +
+            //   '\n\t\tpolysentiment: {Conservative: ' + political.Conservative + ' ...}' +
+            //   '\n\t\tlocation: {latitude: ' + location.latitude + ' ...}' +
+            //   '\n\t}'
+            // );
           });
         }
       }
@@ -108,24 +108,15 @@ routes.home = function(req, res){
   res.sendfile('./public/index.html');
 };
 
-routes.GETsentiment = function(req, res){
-   Points.find({}, function(err, points) {
+routes.GETdata = function(req, res){
+  Points.find({}, function(err, point) {
     if (err) { 
       console.log('Error!');
       res.send(err);
     }
-    res.json(points);
-  });
-};
-
-routes.GETpolitical = function(req, res){
-  Points.find({}, function(err, points) {
-    if (err) { 
-      console.log('Error!');
-      res.send(err);
-    }
-    res.json(points);
+    res.json(point);
   });
 };
 
 module.exports=routes;
+
