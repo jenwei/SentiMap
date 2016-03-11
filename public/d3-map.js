@@ -1,3 +1,15 @@
+/*
+d3-map.js contains the showMap function. Based on the page information passed in ('senti' or 'poly'), 
+the data will be processed in a way specific to the page and then displayed on the appropriate map.
+
+For 'senti', the color changes based on whether the sentiment is positive or negative, and 
+the opacity changes based on the strength of the sentiment (somwhere on the spectrum of extremely 
+negative, neutral, extremely positive).
+
+For 'poly', the color is dependent on the political party (Libertarian, Conservative, Liberal, Green) 
+with the highest likelihood score, and the opacity corresponds with the strength of that score.
+*/
+
 function showMap(page, data){
   var width = 950,
     height = 550;
