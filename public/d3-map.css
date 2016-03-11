@@ -1,7 +1,7 @@
 .feature {
 	fill: none;
-	stroke: grey;
-	stroke-width: 1px;
+	stroke: #ffffff;
+	stroke-width: 2px;
 		stroke-linejoin: round;
 }
 
@@ -28,7 +28,6 @@ div.tooltip {
 	border-radius: 8px;
 	pointer-events: none;
 }
-
 
 .legend {
     font-size: 12px;

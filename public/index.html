@@ -21,8 +21,7 @@
       <link rel="stylesheet" href="//cdn.gitcdn.link/cdn/angular/bower-material/v1.0.6/angular-material.css">
       <link rel="stylesheet" href="//material.angularjs.org/1.0.6/docs.css">
       <!-- SPELLS -->
-      <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script><!-- load jquery -->
-      <!--     // <script src="bower_components/angular-xeditable/dist/js/xeditable.js"></script> -->
+      <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
       <script src="//cdn.jsdelivr.net/hammerjs/2.0.4/hammer.min.js"></script>
       <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.3.6/angular.js"></script>
       <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.3.6/angular-animate.js"></script>
@@ -42,7 +41,7 @@
    <body ng-controller="mainController">
       <div class="container">
          <!-- HEADER AND PAGE COUNT -->
-         <div style=" margin-top: 30px; padding-right:0; margin-right: 0px; width: 100%; background-color: #e9e9e9" class="jumbotron text-center header">
+         <div style=" margin-top: 30px; margin-bottom: 0px; padding: 0px; margin-right: 0px; width: 100%; background-color: #ffffff; color: #2c3e50;" class="jumbotron text-center header">
             <h1>SentiMap</h1> <br> 
          </div>
          <!-- PAGE LIST -->
@@ -65,8 +64,9 @@
 
                          <img src = "images/politicalLegendLong.png" style="width:300px;">
                         <div id = "politicalMap"> </div>
-                        <p>Political Sentiment showcases recent tweets pulled from the Twitter Stream API and analyzes it using the indico political sentiment analysis API. The result is a series of points plotted using the Google Maps API on the map above which was made using D3 where the color corresponds to strength of the highest likelihood as the indico API returns likelihood scores for each of four political parties (Libertarian, Conservative, Liberal, Green).</p>
-                       
+
+
+                        <p>Political Sentiment showcases recent tweets pulled from the Twitter Stream API and analyzes it using the indico political sentiment analysis API. The result is a series of points plotted on the map above using D3 where the color corresponds to the highest likelihood score of the four political parties that indico looks scores for (Libertarian, Conservative, Liberal, Green), and the opacity corresponds to the strength of the highest likelihood score.</p>
                      </md-content>
                   </md-tab>
                </md-tabs>

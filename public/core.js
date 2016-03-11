@@ -6,14 +6,14 @@
 sentiMap = angular.module('sentiMap', ['ngMaterial']);
 
 sentiMap.controller('mainController', function($scope, $http){
-    $scope.getData=function(page){
+    $scope.getData=function(page, divName){
         $http({
               method: 'GET',
               url: '/data'
             })
              .success(function(data){
                  // console.log('Got point data for ' + page);
-                 showMap(page, data);
+                 showMap(page, divName, data);
              })
              .error(function(err){
                  console.log('Error: in get \'/data\' - ' + err);
@@ -23,12 +23,12 @@ sentiMap.controller('mainController', function($scope, $http){
     $scope.showSentiMap=function(){
         var ourSVG = angular.element( document.querySelector('#sentimentMap'));
         ourSVG.empty(); // prevents multiple maps being appended to this element of the document
-        $scope.getData('senti');
+        $scope.getData('senti', '#sentimentMap');
     }; 
 
     $scope.showPolyMap=function(){
         var ourPolySVG = angular.element( document.querySelector('#politicalMap'));
         ourPolySVG.empty();
-        $scope.getData('poly');
+        $scope.getData('poly', '#politicalMap');
     }; 
  });
