@@ -1,4 +1,4 @@
-function showMap(page, data){
+function showMap(page, divName, data){
   var width = 950,
     height = 550;
 
@@ -12,15 +12,12 @@ function showMap(page, data){
   // set scales for color and opacities
   var sentimentColor = d3.scale.linear()
       .domain([0, 1])
-      .range(['#ec576b', '#49e20e']);
+      .range(['#e74c3c', '#2ecc71']);
   var sentimentOpacity = d3.scale.linear()
       .domain([0, .5, 1])
       .range([1, 0 , 1]);
-  // var politicalColor = d3.scale.linear()
-  //     .domain([0, 1])
-  //     .range(['#ec576b', '#49e20e']);
-  var politicalOpacity = d3.scale.linear()
-      .domain([.4, 1])
+  var politicalOpacity = d3.scale.log()
+      .domain([.25, 1])
       .range([0 , 1]);
 
   d3.json("us.json", function(error, topo) { 
@@ -28,23 +25,24 @@ function showMap(page, data){
   	states = topojson.feature(topo, topo.objects.states).features
 
   	// set projection parameters
-  	projection
-      .scale(850)
-      .center([-98, 37.5])
+	projection
+    .scale(850)
+    .center([-98, 37.5])
+
+  var svg = d3.select(divName).insert("svg")
+    .attr("width", width)
+    .attr("height", height);
+
+  // add states from topojson
+  svg.selectAll("path")
+      .data(states).enter()
+      .append("path")
+      .attr("class", "feature")
+      .style("fill", "#ecf0f1")
+      .attr("d", path);
 
     // create svg variable
     if(page == 'senti'){
-      var svg = d3.select("#sentimentMap").insert("svg")
-          .attr("width", width)
-          .attr("height", height);
-
-      // add states from topojson
-      svg.selectAll("path")
-          .data(states).enter()
-          .append("path")
-          .attr("class", "feature")
-          .style("fill", "#cccccc")
-          .attr("d", path);
           
       // add circles to svg
       svg.selectAll("circle")
@@ -94,21 +92,10 @@ function showMap(page, data){
     }
 
     else if(page == 'poly'){
-      var svg = d3.select("#politicalMap").append("svg")
-              .attr("width", width)
-              .attr("height", height)
-
-      // add states from topojson
-      svg.selectAll("path")
-          .data(states).enter()
-          .append("path")
-          .attr("class", "feature")
-          .style("fill", "#cccccc")
-          .attr("d", path);
           
       // add circles to svg
       //var category = ['Conservative', 'Libertarian', 'Green', 'Liberal'];
-      var category = ['#ff0000', '#ffff00', '#00ff00', '#0000ff'];
+      var category = ['#e74c3c', '#f1c40f', '#2ecc71', '#3498db'];
       svg.selectAll("circle")
         .data(data).enter()
         .append("circle")
