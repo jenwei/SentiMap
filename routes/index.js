@@ -6,7 +6,15 @@ var routes = {};
 var express  = require('express');
 var mongoose = require('mongoose'); 
 var Points = require('../models/pointModel.js');
-var auth = require('../auth.js');
+var auth = require('../auth.js') || {
+    consumer_key: process.env.con_key,
+    consumer_secret: process.env.con_secret,
+    access_token: process.env.acc_token,
+    access_token_secret: process.env.acc_token_secret,
+    indico_api_key: process.env.indico_api_key,
+    google_api_key: process.env.google_api_key,
+    mongo: process.env.MONGOLAB_URI
+  };
 var Twit = require('twit');
 var indico = require('indico.io');
 indico.apiKey =  auth.indico_api_key;
