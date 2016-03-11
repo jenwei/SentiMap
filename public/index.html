@@ -54,14 +54,19 @@
                   
                   <md-tab md-on-select='showSentiMap()' label="Positive/Negative Sentiment" >
                      <md-content class="md-padding">
+
+                        <img src = "images/sentimentLegendLong.png" style="width:300px;">
                         <div id = "sentimentMap"> </div>
-                        <p>Positive/Negative Sentiment showcases recent tweets pulled from the Twitter Stream API and analyzes it using the indico sentiment analysis API. The result is a series of points plotted on the map above using D3 where the color corresponds to how positive or negative a tweet is and the opacity corresponds to the strength of the sentiment.</p>
+                        <p>Positive/Negative Sentiment showcases recent tweets pulled from the Twitter Stream API and analyzes it using the indico sentiment analysis API. The result is a series of points plotted using the Google Maps API on the map above which was made using D3 where the color corresponds to how positive or negative a tweet is and the opacity corresponds to the strength of the sentiment.</p>
                      </md-content>
                   </md-tab>
                   <md-tab md-on-select='showPolyMap()'label="Political Sentiment">
                      <md-content class="md-padding" >
+
+                         <img src = "images/politicalLegendLong.png" style="width:300px;">
                         <div id = "politicalMap"> </div>
-                        <p>Political Sentiment showcases recent tweets pulled from the Twitter Stream API and analyzes it using the indico political sentiment analysis API. The result is a series of points plotted on the map above using D3 where the color corresponds to strength of the highest likelihood as the indico API returns likelihood scores for each of four political parties (Libertarian, Conservative, Liberal, Green).</p>
+                        <p>Political Sentiment showcases recent tweets pulled from the Twitter Stream API and analyzes it using the indico political sentiment analysis API. The result is a series of points plotted using the Google Maps API on the map above which was made using D3 where the color corresponds to strength of the highest likelihood as the indico API returns likelihood scores for each of four political parties (Libertarian, Conservative, Liberal, Green).</p>
+                       
                      </md-content>
                   </md-tab>
                </md-tabs>
