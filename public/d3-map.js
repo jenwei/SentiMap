@@ -79,28 +79,6 @@ function showMap(page, divName, data){
           .style("opacity", 0.0);
       })
 
-    // legend of sentimap https://github.com/zeroviscosity/d3-js-step-by-step/blob/master/step-3-adding-a-legend.html
-    // http://eyeseast.github.io/visible-data/2013/08/27/responsive-legends-with-d3/
-    //var legend = svg.selectAll('.legend')
-    //  .data(sentimentColor.domain())
-    //   .enter()
-    //   .append('g')
-    //   .attr("class", "legendLinear")
-    //   .attr("transform", "translate(20,20)");
-
-    // var legendRectSize = 20, legendSpacing = 5;
-    // var color = sentimentColor.range();
-
-    legend.append('rect')
-      .attr('width', legendRectSize)
-      .attr('height', legendRectSize)
-      .style('fill', color)
-      .style('stroke', color);
-
-    legend.append('text')
-      .attr('x', legendRectSize + legendSpacing)
-      .attr('y', legendRectSize + legendSpacing)
-      .text(function(d) {return d; })
   }
 
   else if(page == 'poly'){
