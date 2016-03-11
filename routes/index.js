@@ -7,7 +7,6 @@ var express  = require('express');
 var mongoose = require('mongoose'); 
 var Points = require('../models/pointModel.js');
 if(process.env.MONGOLAB_URI){ // assume that this is heroku and that all the env vars are set
-  console.log("Made it to the if statement");
   var auth = {
     consumer_key: process.env.con_key,
     consumer_secret: process.env.con_secret,
