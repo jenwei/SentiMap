@@ -52,20 +52,20 @@
                <md-tabs md-dynamic-height="true" md-border-bottom="">
                   
                   <md-tab md-on-select='showSentiMap()' label="Positive/Negative Sentiment" >
-                     <md-content class="md-padding" id="sentimentMap">
-                        <p>map1</p>
+                     <md-content class="md-padding">
+                        <div id = "sentimentMap"> </div>
+                        <p>Positive/Negative Sentiment showcases recent tweets pulled from the Twitter Stream API and analyzes it using the indico sentiment analysis API. The result is a series of points plotted on the map above using D3 where the color corresponds to how positive or negative a tweet is and the opacity corresponds to the strength of the sentiment.</p>
                      </md-content>
                   </md-tab>
                   <md-tab md-on-select='showPolyMap()'label="Political Sentiment">
-                     <md-content class="md-padding" id = "politicalMap">
-                        <p> map2</p>
+                     <md-content class="md-padding" >
+                        <div id = "politicalMap"> </div>
+                        <p>Political Sentiment showcases recent tweets pulled from the Twitter Stream API and analyzes it using the indico political sentiment analysis API. The result is a series of points plotted on the map above using D3 where the color corresponds to the highest likelihood score of the four political parties that indico looks scores for (Libertarian, Conservative, Liberal, Green), and the opacity corresponds to the strength of the highest likelihood score.</p>
                      </md-content>
                   </md-tab>
                </md-tabs>
             </md-content>
          </div>
       </div>
-      <!--         </div>
-         </div> -->
    </body>
 </html>
