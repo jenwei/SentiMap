@@ -12,12 +12,22 @@ var methodOverride = require('method-override'); 	// simulate DELETE and PUT (ex
 var favicon = require('serve-favicon');
 var app = express();
 
-try {
+// logic for dealing with local vs heroku
+if(process.env.MONGOLAB_URI){ // assume that this is heroku and that all the env vars are set
+	var auth = {
+		consumer_key: process.env.con_key,
+		consumer_secret: process.env.con_secret,
+		access_token: process.env.acc_token,
+		access_token_secret: process.env.acc_token_secret,
+		indico_api_key: process.env.indico_api_key,
+		google_api_key: process.env.google_api_key,
+		mongo: process.env.MONGOLAB_URI
+	};
+} else { // if running locally
 	var auth = require('./auth.js');
-	mongoose.connect(auth.mongo);
-} catch (e) {
-	mongoose.connect(process.env.MONGOLAB_URI);
 }
+var MONGOLAB_URI = auth.mongo;
+mongoose.connect(MONGOLAB_URI);
 
 var db = mongoose.connection;
 db.on('error', console.error.bind(console, 'Connection error:'));
