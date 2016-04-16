@@ -1,5 +1,5 @@
 /*
-	app.js: Main application file. Creates connection to database, creates 
+	app.js: Main application file. Creates connection to database, creates
 	app endpoints, listens to port 3000 or PORT environment variable.
 */
 
@@ -13,6 +13,9 @@ var favicon = require('serve-favicon');
 var app = express();
 
 // logic for dealing with local vs heroku
+// You could have handled this if statement *inside* the auth.js module -- that
+// way you'd be able to require auth.js in many places without duplicating this logic!
+// (this same exact code appears in ./routes/index.js, too)
 if(process.env.MONGOLAB_URI){ // assume that this is heroku and that all the env vars are set
 	var auth = {
 		consumer_key: process.env.con_key,
