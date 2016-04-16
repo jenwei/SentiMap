@@ -1,13 +1,17 @@
  /*
-    style.css: Defines some additional styling, in particular the 
+    style.css: Defines some additional styling, in particular the
     alignment of the page list and the view/edit area.
+
+
+    The way you set up public/d3-map.css is right -- CSS doesn't
+    belong in the views folder, and you shouldn't wrap it in a <style> tag
 */
 
 <style>
     html{
         overflow-y:scroll;
     }
-    
+
     body{
         padding-top:50px;
     }
@@ -20,8 +24,8 @@
         float:left;
         overflow:hidden;
         content:none;
-    } 
-    
+    }
+
     #pageshowing{
         display: inline;
         float: right;
@@ -32,7 +36,7 @@
     }
     .header{
         margin-left: 0px;
-        margin-right: 
+        margin-right:
     }
 
     .specialjum{
@@ -41,7 +45,7 @@
         padding-right:0;
         background-color: #cccccc;
     }
-    
+
     *:before {
         content: none;
     }

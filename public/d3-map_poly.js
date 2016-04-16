@@ -1,3 +1,5 @@
+// How does this file relate to d3-map.js? I can't tell what it's used for.
+
 var width = 950,
     height = 550;
 
@@ -39,7 +41,7 @@ d3.json("us.json", function(error, topo) { console.log(topo);
       .attr("d", path);
 
       console.log(topojson.mesh(topo, topo.objects.states))
-    // put boarder around states 
+    // put boarder around states
   	//svg.append("path")
     //  .datum(topojson.mesh(topo, topo.objects.states, function(a, b) { return a !== b; }))
     //  .attr("class", "mesh")
@@ -54,13 +56,13 @@ d3.json("us.json", function(error, topo) { console.log(topo);
     .attr("r", function (d) { return d.sent})
 		// .attr("r", "8px")
 		.attr("fill", "red")
-    .on("mouseover", function(d){ 
+    .on("mouseover", function(d){
       div.transition()
         .duration(200)
         .style("opacity", 0.9)
       div.html(d.tweetName)
         .style("left", (d3.event.pageX) + 10 + "px")
-        .style("top", (d3.event.pageY - 30) + "px")  
+        .style("top", (d3.event.pageY - 30) + "px")
     })
     .on("mouseout", function(d) {
       div.transition()

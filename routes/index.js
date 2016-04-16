@@ -4,7 +4,7 @@
 
 var routes = {};
 var express  = require('express');
-var mongoose = require('mongoose'); 
+var mongoose = require('mongoose');
 var Points = require('../models/pointModel.js');
 if(process.env.MONGOLAB_URI){ // assume that this is heroku and that all the env vars are set
   var auth = {
@@ -64,7 +64,7 @@ var geocoder = require('node-geocoder')(geocoderProvider, httpAdapter, google_ap
 
       var political;
       indico.political(tweet.text)
-        .then(function(res){ // { Libertarian: 0.47740164630834825, Liberal: 0.16617097211030055, Green: 0.08454409540443657, Conservative: 0.2718832861769146} 
+        .then(function(res){ // { Libertarian: 0.47740164630834825, Liberal: 0.16617097211030055, Green: 0.08454409540443657, Conservative: 0.2718832861769146}
           political = res;
           stage = stage + 1;
           savePoint('Political');
@@ -86,8 +86,8 @@ var geocoder = require('node-geocoder')(geocoderProvider, httpAdapter, google_ap
           log = false;
         });
 
-      function savePoint(stageName){
-        // console.log(stageName + ' stage ' + stage);
+      function savePoint(){
+        // Why do you need stageName inside this function?
         if(log && stage === 3){ //if no errors occured and other functions occurred, add to mongodb
           var point = new Points({
               text: tweet.text,
@@ -98,14 +98,7 @@ var geocoder = require('node-geocoder')(geocoderProvider, httpAdapter, google_ap
 
           point.save(function (err) {
             if (err) console.log('Err adding point:', err);
-            // else console.log('Added point: ' + 
-            //   '\n\t{' + 
-            //   '\n\t\ttext: ' + tweet.text +
-            //   '\n\t\tsentiment: ' + sentiment +
-            //   '\n\t\tpolysentiment: {Conservative: ' + political.Conservative + ' ...}' +
-            //   '\n\t\tlocation: {latitude: ' + location.latitude + ' ...}' +
-            //   '\n\t}'
-            // );
+            // clean up old code
           });
         }
       }
@@ -122,7 +115,7 @@ routes.home = function(req, res){
 
 routes.GETdata = function(req, res){
   Points.find({}, function(err, point) {
-    if (err) { 
+    if (err) {
       console.log('Error!');
       res.send(err);
     }
