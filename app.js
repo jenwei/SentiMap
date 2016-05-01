@@ -43,7 +43,7 @@ app.use(bodyParser.json({ type: 'application/vnd.api+json' })); // parse applica
 app.use(methodOverride());
 app.use(favicon(__dirname + '/public/images/favicon.ico'));
 
-app.get('/', index.home);
+app.get('/', index.home); // its better to do this on * and at the end of your route list so that 404s don't need to reload the entire app. 
 app.get('/data', index.GETdata);
 
 var PORT = process.env.PORT || 3000;
